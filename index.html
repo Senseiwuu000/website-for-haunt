@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Netmask — cracked builds, checked in the open</title>
+  <meta name="description" content="Netmask is a small file library with a real, client-side JAR scanner. Cracked clients, menus and tweaks with published hashes. Nothing is uploaded.">
+  <meta name="theme-color" content="#0b0c0d">
+  <meta property="og:title" content="Netmask — cracked builds, checked in the open">
+  <meta property="og:description" content="Minecraft clients, GTA V menus, patched software and tweaks. Every build gets scanned; the scanner runs in your browser.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-head">
+    <div class="wrap head-inner">
+      <a class="brand" href="#top" aria-label="Netmask, back to top">
+        <img class="logo-mark" src="assets/img/logo.svg" width="27" height="27" alt="">
+        <span class="brand-text">
+          <span class="brand-name">Netmask</span>
+          <span class="brand-sub">file library</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Sections">
+        <a href="#catalog">Catalog</a>
+        <a href="#scanner">Scanner</a>
+        <a href="#ratters">Know ratters</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-ghost btn-sm nav-ticket" href="#tickets">Tickets</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span>
+        <span class="sr">Menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="head-strip">
+    <div class="wrap strip-inner">
+      <span>ruleset <span data-ruleset>2026.10.3</span></span>
+      <span>scanner runs locally</span>
+      <span>no accounts · no telemetry</span>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">cracked builds, looked at properly</p>
+          <h1>Cracked stuff,<br><span class="marked">checked<svg class="scribble" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8.4c27-4.9 53-6.1 79-3.9 26 2.2 56 4.6 117 .6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> in the open.</h1>
+          <p class="lede">Minecraft clients, GTA V menus, patched software and tweaks, listed with their hashes. Run any jar through the scanner and it tells you what is actually inside — in this tab, not on someone else's server.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#catalog">Open the catalog</a>
+            <a class="btn" href="#scanner">Scan a jar</a>
+          </div>
+          <p class="hero-facts"><span>200 MB cap</span><span>static analysis only</span><span>nothing uploaded</span></p>
+        </div>
+
+        <aside class="hero-scan" aria-label="Example scanner output">
+          <div class="hero-scan-top">
+            <span class="mono-tag">example output</span>
+            <span class="led" aria-hidden="true"></span>
+          </div>
+          <dl class="hero-scan-list">
+            <div><dt>file</dt><dd>aurora-3.2.jar</dd></div>
+            <div><dt>size</dt><dd>2.14 MB &middot; 418 entries</dd></div>
+            <div><dt>manifest</dt><dd>Main-Class: dev.aurora.Boot</dd></div>
+            <div><dt>signed</dt><dd>no</dd></div>
+            <div><dt>nested jars</dt><dd>0</dd></div>
+          </dl>
+          <div class="hero-verdict">
+            <span class="dot ok" aria-hidden="true"></span>
+            <div class="hero-verdict-text">
+              <strong>Nothing obvious</strong>
+              <p>2 low findings &middot; 1 note</p>
+            </div>
+            <span class="score-mini">6/100</span>
+          </div>
+          <p class="hero-scan-note">Every check runs in the browser. No upload, no queue.</p>
+        </aside>
+      </div>
+
+      <div class="wrap">
+        <dl class="stats">
+          <div><dt>max file size</dt><dd>200 <small>MB</small></dd></div>
+          <div><dt>bytes uploaded</dt><dd>0</dd></div>
+          <div><dt>decompilers on rotation</dt><dd>3</dd></div>
+          <div><dt>people running this</dt><dd>1</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="label">01 / catalog</p>
+          <h2>What's on the shelf</h2>
+          <p class="sec-sub">Clients, menus, patched installers and tweaks. Files live in the server; this page is the shelf label. Every build gets a scan and a hash before it goes up, and a stale entry gets retired instead of quietly replaced.</p>
+        </div>
+
+        <p class="demo-note">
+          <span class="dot warn" aria-hidden="true"></span>
+          <span>Listings below are demo entries. The owner swaps them out in <code>assets/js/data.js</code> — the scanner under them is real.</span>
+        </p>
+
+        <div class="filters" id="filters" role="group" aria-label="Filter listings"></div>
+        <div class="cards" id="cards"></div>
+      </div>
+    </section>
+
+    <section class="section" id="scanner">
+      <div class="wrap scanner-grid">
+        <aside class="scanner-aside">
+          <p class="label">02 / jar scanner</p>
+          <h2>Drop a jar.<br>See what's inside.</h2>
+          <p class="sec-sub">Manifest, signatures, embedded binaries, class strings, nested jars and obfuscation. Static analysis, client side, 200 MB per file.</p>
+
+          <details class="ruleset">
+            <summary>What the scanner looks for</summary>
+            <ul id="ruleList" class="rule-list"></ul>
+          </details>
+
+          <p class="tiny">The scanner is plain JavaScript: <a href="assets/js/scanner.js">rules</a>, <a href="assets/js/zip.js">zip reader</a>, <a href="assets/js/classfile.js">class parser</a>. Read it before you trust it — that is the point.</p>
+        </aside>
+
+        <div class="scanner-main">
+          <div class="drop" id="drop">
+            <input type="file" id="fileInput" accept=".jar,.zip,application/java-archive,application/zip" hidden>
+            <svg class="drop-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M6 9.5A2.5 2.5 0 0 1 8.5 7h4l2.2 3H23a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9.5Z" stroke="currentColor" stroke-width="1.3"/>
+              <path d="M11 17h10M11 21h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <p class="drop-title">Drop a <code>.jar</code> or <code>.zip</code></p>
+            <p class="drop-sub">or <button class="linkish" id="pickFile" type="button">pick a file</button> from this machine</p>
+            <p class="drop-note">200 MB max &middot; read in the tab &middot; nothing leaves your device</p>
+          </div>
+
+          <ul class="scan-steps" id="scanSteps">
+            <li>
+              <span class="step-no">01 / read</span>
+              <strong>Every entry</strong>
+              <p>Manifest, signatures, nested archives.</p>
+            </li>
+            <li>
+              <span class="step-no">02 / check</span>
+              <strong>Every string</strong>
+              <p>Class constants, scripts, loaders, binaries.</p>
+            </li>
+            <li>
+              <span class="step-no">03 / report</span>
+              <strong>Something to keep</strong>
+              <p>Findings, class outline, Markdown export.</p>
+            </li>
+          </ul>
+
+          <div class="scan-progress" id="scanProgress" hidden>
+            <div class="progress-head">
+              <span id="progressStage">reading archive</span>
+              <span class="mono" id="progressPct">0%</span>
+            </div>
+            <div class="progress-track"><span id="progressBar"></span></div>
+            <div class="progress-foot">
+              <span class="tiny" id="progressDetail">&nbsp;</span>
+              <button class="linkish" id="cancelScan" type="button">cancel</button>
+            </div>
+          </div>
+
+          <div id="scanResults" hidden>
+            <div class="verdict" id="verdict">
+              <div class="verdict-main">
+                <p class="mono-tag">verdict</p>
+                <h3 id="verdictTitle">—</h3>
+                <p class="verdict-line" id="verdictLine"></p>
+                <div class="score-track"><span id="scoreBar"></span></div>
+                <p class="score-note">risk score <strong id="scoreNum">0</strong> / 100. A number, not a guarantee.</p>
+              </div>
+              <dl class="scan-meta">
+                <div><dt>file</dt><dd id="mFile">—</dd></div>
+                <div class="meta-hash"><dt>sha-256</dt><dd><code id="mHash">—</code><button class="copy" type="button" data-copy="hash">copy</button></dd></div>
+                <div><dt>entries</dt><dd id="mEntries">—</dd></div>
+                <div><dt>classes</dt><dd id="mClasses">—</dd></div>
+                <div><dt>nested jars</dt><dd id="mNested">—</dd></div>
+                <div><dt>scanned in</dt><dd id="mTime">—</dd></div>
+              </dl>
+            </div>
+
+            <div class="result-bar">
+              <div class="tabs" role="tablist" aria-label="Scan result views">
+                <button class="tab is-active" id="tabFindings" role="tab" aria-selected="true" aria-controls="panelFindings" type="button">Findings <span id="countFindings">0</span></button>
+                <button class="tab" id="tabFiles" role="tab" aria-selected="false" aria-controls="panelFiles" type="button">Files <span id="countFiles">0</span></button>
+                <button class="tab" id="tabOutline" role="tab" aria-selected="false" aria-controls="panelOutline" type="button">Class outline <span id="countClasses">0</span></button>
+              </div>
+              <div class="result-actions">
+                <button class="btn btn-quiet btn-sm" id="copyReport" type="button">Copy report</button>
+                <button class="btn btn-quiet btn-sm" id="downloadReport" type="button">Download .md</button>
+                <button class="btn btn-quiet btn-sm" id="resetScan" type="button">Clear</button>
+              </div>
+            </div>
+
+            <div id="panelFindings" role="tabpanel" aria-labelledby="tabFindings">
+              <div class="findings" id="findings"></div>
+              <div class="urls-block" id="urlsBlock" hidden>
+                <h4>Outbound URLs found</h4>
+                <p class="tiny">Anything the jar hard-codes. Not a verdict on its own — read them.</p>
+                <ul class="url-list" id="urlList"></ul>
+              </div>
+            </div>
+
+            <div id="panelFiles" role="tabpanel" aria-labelledby="tabFiles" hidden>
+              <div class="list-toolbar">
+                <input class="search" id="fileSearch" type="search" placeholder="filter by path or type" aria-label="Filter files">
+                <span class="tiny" id="fileCount"></span>
+              </div>
+              <div class="table-wrap">
+                <table class="file-table">
+                  <thead><tr><th>path</th><th>type</th><th class="num">size</th><th>flags</th></tr></thead>
+                  <tbody id="fileRows"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="panelOutline" role="tabpanel" aria-labelledby="tabOutline" hidden>
+              <p class="tiny outline-hint">A class outline is not a decompile, but it shows what the class declares and references. Full Vineflower output happens in <a href="#tickets">#tickets</a>.</p>
+              <div class="outline-grid">
+                <div class="outline-list-wrap">
+                  <input class="search" id="classSearch" type="search" placeholder="find a class" aria-label="Find a class">
+                  <ul class="outline-list" id="classList"></ul>
+                </div>
+                <pre class="outline-view" id="outlineView">Pick a class on the left.</pre>
+              </div>
+            </div>
+          </div>
+
+          <noscript><p class="tiny">The scanner needs JavaScript. Nothing else on the page does.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ratters">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="label">03 / know ratters</p>
+          <h2>People who ship rats.</h2>
+          <p class="sec-sub">A RAT is a remote access trojan — it hands someone else your files, sessions or screen. This list exists so you can check a name before you run their build. Every row needs a reason and a piece of evidence. No evidence, no row.</p>
+        </div>
+
+        <div class="sample-banner">
+          <span class="pill pill-sample">sample rows</span>
+          <p>These three rows are examples, not accusations. Publish a name only with a hash and a decompile attached — being wrong here is worse than being slow.</p>
+        </div>
+
+        <div class="table-wrap rat-wrap">
+          <table class="rat-table">
+            <thead>
+              <tr>
+                <th scope="col">handle / build</th>
+                <th scope="col">what shipped</th>
+                <th scope="col">why it is flagged</th>
+                <th scope="col">evidence</th>
+                <th scope="col">status</th>
+                <th scope="col" class="num">added</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="handle"><code>@sample_handle</code><span class="cell-sub">Aurora fork, 3.1</span></td>
+                <td data-label="what shipped">Minecraft client fork</td>
+                <td data-label="why">Loader fetched a second jar at launch and opened a Discord webhook with the player's token in the payload. Second jar was not in the listing.</td>
+                <td data-label="evidence"><span class="evidence">hash + decompile #118</span></td>
+                <td data-label="status"><span class="pill pill-bad">confirmed</span></td>
+                <td data-label="added" class="num">2026-09-14</td>
+              </tr>
+              <tr>
+                <td data-label="handle"><code>@second_example</code><span class="cell-sub">unnamed build</span></td>
+                <td data-label="what shipped">GTA V menu</td>
+                <td data-label="why">Packed class loader plus a base64 blob decoded at runtime. Submitted build never matched the hash on the listing.</td>
+                <td data-label="evidence"><span class="evidence">awaiting sample</span></td>
+                <td data-label="status"><span class="pill pill-warn">under review</span></td>
+                <td data-label="added" class="num">2026-10-02</td>
+              </tr>
+              <tr>
+                <td data-label="handle"><code>@cleared_example</code><span class="cell-sub">Fathom menu, 2.4</span></td>
+                <td data-label="what shipped">GTA V menu</td>
+                <td data-label="why">Flagged by a user for a native loader. Manual decompile showed the loader only loads the bundled licence stub. Row kept so the correction is visible.</td>
+                <td data-label="evidence"><span class="evidence">decompile #121, cleared</span></td>
+                <td data-label="status"><span class="pill pill-ok">cleared</span></td>
+                <td data-label="added" class="num">2026-08-30</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="tiny after-table">Think a row is wrong? Open a ticket with the hash. Corrections get a note in the row, not a silent delete.</p>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap faq-grid">
+        <div class="faq-head">
+          <p class="label">04 / faq</p>
+          <h2>Fair questions.</h2>
+          <p class="sec-sub">The ones that come up every week, answered without a sales voice.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>Do you rat people?</summary>
+            <div class="faq-body">
+              <p>No. There is no analytics, no cookie, no upload endpoint and no account system on this page. The scanner is plain JavaScript, starting at <a href="assets/js/scanner.js"><code>scanner.js</code></a>, and you can read every line of it. Every listed build gets its SHA-256 published so the exact file you downloaded can be checked by someone who is not us.</p>
+              <p class="faq-aside">If a listing's hash does not match the file you got, do not run it. That is how a swapped build looks.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Does the scanner upload my jar?</summary>
+            <div class="faq-body">
+              <p>No. The file is read with the browser's File API, unzipped in memory and thrown away when you close the tab. Open dev tools and watch the network tab while a scan runs if you want to be sure. The one thing the page downloads is its own code.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Why is there a 200 MB limit?</summary>
+            <div class="faq-body">
+              <p>Because the scan happens in your browser's memory, not on a machine with 32 GB to spare. 200 MB covers every client and menu on the shelf. Bigger archives can go through <a href="#tickets">#tickets</a> and get looked at by hand.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What does the scanner actually check?</summary>
+            <div class="faq-body">
+              <p>Manifest entries (including <code>Premain-Class</code> and <code>Agent-Class</code>), jar signatures, embedded executables and native libraries, double extensions, nested jars, and the string constants in every class: process spawning, shell commands, Discord webhooks, download calls, reflection loaders, persistence paths, credential paths, screen capture and key input. On top of that it looks at class-name obfuscation and pulls out every URL in the build.</p>
+              <p>It is a static, rule-based scan. "Nothing obvious" means nothing matched, not that the file is safe. A clean report and a VM is the sane combination.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Do you decompile jars for people?</summary>
+            <div class="faq-body">
+              <p>Yes, in <a href="#tickets">#tickets</a>. Vineflower first, Recaf for quick passes, Fernflower when Vineflower trips on an old class. Paste the SHA-256 from the scan report so the file you have and the file being pulled apart are provably the same one. Turnaround depends on the queue and on how badly the build is obfuscated.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Are the listed clients safe?</summary>
+            <div class="faq-body">
+              <p>They are checked, not blessed. Every build gets the same scan and the report is published, but a rule-based scan cannot prove intent, and clean code can still get your account banned. Run this stuff on a spare machine or a VM, never on an account you care about.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How do I report a build or get removed from the list?</summary>
+            <div class="faq-body">
+              <p>Open a ticket with the hash, the source and what you found. If a row is wrong, it gets corrected with a visible note. If you are on the list and you have proof the row is wrong, that gets published too — being fast is not worth being wrong.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="tickets" id="tickets">
+      <div class="wrap">
+        <div class="ticket-band">
+          <div class="ticket-copy">
+            <p class="label">tickets</p>
+            <h2>Got a jar that is acting weird?</h2>
+            <p>Drop the file and the SHA-256 in <code>#tickets</code>. If it is small enough, scan it here first — the report tells both of us where to look, and saves a round trip.</p>
+          </div>
+          <div class="ticket-actions">
+            <a class="btn btn-accent" href="#tickets" data-invite>Open #tickets</a>
+            <a class="btn btn-quiet" href="#scanner">Scan it first</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <a class="brand brand-foot" href="#top">
+          <img class="logo-mark" src="assets/img/logo.svg" width="27" height="27" alt="">
+          <span class="brand-name">Netmask</span>
+        </a>
+        <p>One person, a file host and a scanner. No crew, no sponsor, no "trusted staff" list.</p>
+      </div>
+
+      <nav class="foot-links" aria-label="Footer">
+        <a href="#catalog">Catalog</a>
+        <a href="#scanner">Jar scanner</a>
+        <a href="#ratters">Know ratters</a>
+        <a href="#faq">FAQ</a>
+        <a href="assets/js/scanner.js">Scanner source</a>
+      </nav>
+
+      <div class="foot-note">
+        <p>Cheats and cracked builds break terms of service and get accounts banned. This page checks for malware; it cannot make a bad decision safe. Use a spare machine or a VM, and never your main account.</p>
+        <p class="foot-fine">No external fonts, scripts or analytics. Everything here loads from this folder.</p>
+      </div>
+    </div>
+    <div class="wrap foot-bar">
+      <span>&copy; <span id="year">2026</span> Netmask</span>
+      <span>ruleset <span data-ruleset>2026.10.3</span></span>
+      <span>last swept <span id="lastSwept">2026-10-30</span></span>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-back" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+      <button class="modal-close" type="button" data-close aria-label="Close listing">&times;</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <clipPath id="shield">
+      <path d="M16 3.3 27 8v8.2c0 6.2-4.5 10.7-11 12.4C9.5 26.9 5 22.4 5 16.2V8l11-4.7Z"/>
+    </clipPath>
+  </defs>
+  <path d="M16 3.3 27 8v8.2c0 6.2-4.5 10.7-11 12.4C9.5 26.9 5 22.4 5 16.2V8l11-4.7Z" stroke="#a9bd91" stroke-width="1.4" stroke-linejoin="round"/>
+  <g clip-path="url(#shield)" stroke="#a9bd91" stroke-opacity=".32" stroke-width=".8">
+    <path d="M5 11.6h22M5 16.2h22M5 20.8h22M10.4 3v25M16 3v25M21.6 3v25"/>
+  </g>
+  <circle cx="21.6" cy="16.2" r="1.9" fill="#a9bd91"/>
+</svg>
